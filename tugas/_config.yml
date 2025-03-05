@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: My sample book
-author: The Jupyter Book Community
+author: Vidi Pratama Adityas Mauladani
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
@@ -30,3 +30,6 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  use_navigation_expand: true  # Pastikan sidebar selalu terbuka
+  navbar_number_sections: true  # Memberi nomor pada setiap bagian
+  sidebar_footer_text: "Powered by Vidi Pratama Adityas Mauladani"
