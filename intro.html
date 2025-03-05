@@ -514,6 +514,34 @@ Jenis:
   <li>Transformasi Data: Terkadang data perlu diubah formatnya atau diproses lebih lanjut agar dapat digunakan dengan algoritma analisis.</li>
 </ol>
 
+<h2>Deteksi Outlier</h2>
+<p>Outlier adalah nilai yang sangat berbeda dari nilai-nilai lainnya dalam data. 
+  Deteksi outlier sangat penting karena outlier dapat mempengaruhi model yang kita bangun, terutama dalam algoritma berbasis statistik. 
+  Outlier dapat menyebabkan model menjadi bias atau memberikan hasil yang tidak akurat.
+<br>Jenis-Jenis Outlier:</p>
+<ul>
+  <li>Global Outliers: Outlier yang sangat berbeda dengan mayoritas data di seluruh dataset.</li>
+  <li>Contextual Outliers: Outlier yang hanya berbeda dalam konteks tertentu, misalnya, suhu yang sangat tinggi hanya dianggap outlier dalam cuaca dingin, tetapi normal dalam cuaca panas.</li>
+  <li>Collective Outliers: Sekelompok data yang bersama-sama menunjukkan pola yang tidak biasa, meskipun secara individu mungkin tidak dianggap outlier.</li>
+</ul>
+
+<h2>Deteksi Outlier dengan KNN (K-Nearest Neighbors)</h2>
+<p>Algoritma K-Nearest Neighbors (KNN) dapat digunakan untuk mendeteksi outlier berdasarkan kedekatannya dengan tetangga terdekat dalam ruang fitur. 
+  KNN adalah algoritma yang memetakan sebuah titik data dengan melihat k-tetangga terdekatnya dan memberikan penilaian berdasarkan kedekatannya.
+<br>Bagaimana KNN Mendeteksi Outlier?</p>
+<ol>
+<li>Menghitung Jarak: KNN mengukur kedekatan (jarak) antara titik data yang dianalisis dan titik data lainnya. Jarak ini biasanya dihitung menggunakan Euclidean distance (untuk data numerik).</li>
+<li>Menentukan K: Tentukan jumlah tetangga terdekat (k) yang akan digunakan untuk analisis. Biasanya, k=3 atau k=5 adalah nilai yang umum digunakan.</li>
+<li>Menentukan Titik Outlier:</li>
+  <ul>
+    <li>Jika jarak antara suatu titik data dengan k-tetangga terdekatnya sangat besar, maka titik tersebut dianggap sebagai outlier.</li>
+    <li>Rasio Jarak: Titik dengan jarak ke tetangga lebih besar dari sebagian besar titik lain dalam dataset akan dipertimbangkan sebagai outlier.</li>
+  </ul>
+</ol>
+
+<b>Langkah-Langkah Menggunakan KNN untuk Deteksi Outlier:<b>
+<ol>
+  <li>Persiapkan Data: Siapkan data yang akan digunakan untuk mendeteksi outlier. Pastikan data telah dibersihkan dan diproses.</li>
 
 <table border="1">
     <tr>
