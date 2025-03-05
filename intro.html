@@ -704,7 +704,7 @@ Jenis:
     <tr><td>150</td><td>Iris-virginica</td><td>5.1</td><td>1.8</td><td>5.9</td><td>3</td></tr>
   </tbody>
   </table>
-
+<br>
   <li>Hitung Jarak: Hitung jarak antara titik data dengan semua titik lain dalam dataset menggunakan rumus Euclidean atau metode lain yang sesuai.</li>
   <p>Berikut adalah rumus Euclidean :</p>
   
@@ -712,33 +712,66 @@ Jenis:
     <img alt="rumus" src="_images/rumus euclidean.png" />
   </div>
   <br>
-  <p>Atau bisa juga menggunakan kode python</p><br>
+  <p>Atau bisa juga menggunakan kode python</p>
   <div class="cell docutils container">
-  <div class="cell_input docutils container">
-    <div class="highlight-ipython3 notranslate">
-      <div class="highlight">
-        <pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">array</span><span class="p">,</span> <span class="n">linalg</span>
-        <span class="n">dataset</span> <span class="o">=</span> <span class="n">array</span>(<span class="p">[[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">],</span> <span class="p">[</span><span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">],</span> <span class="p">[</span><span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">]]</span>)
-        <span class="n">titik</span> <span class="o">=</span> <span class="n">array</span>(<span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">])</span>
-        <span class="n">jarak</span> <span class="o">=</span> <span class="n">linalg.norm</span>(<span class="n">dataset</span> <span class="o">-</span> <span class="n">titik</span>, <span class="n">axis</span><span class="o">=</span><span class="m">1</span>)
-        <span class="n">print</span>(<span class="s">"Jarak antara titik dengan setiap titik dalam dataset:"</span>, <span class="n">jarak</span>)
-      </pre>
+    <div class="cell_input docutils container">
+      <div class="highlight-ipython3 notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="k">def</span> <span class="n">euclidean_distance</span>(<span class="n">point1</span>, <span class="n">point2</span>):
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">point1</span> <span class="o">-</span> <span class="n">point2</span>
+            <span class="k">return</span> <span class="n">np.sqrt</span>(<span class="n">np.sum</span>(<span class="n">diff</span> <span class="o">**</span> <span class="m">2</span>))
+          </pre>
+        </div>
+      </div>
     </div>
   </div>
-  </div>
+
 
   <li>Tentukan K: Pilih nilai k (jumlah tetangga terdekat) yang sesuai untuk dataset. Pengujian dengan berbagai nilai k dapat membantu memilih nilai yang optimal.</li>
   <li>Identifikasi Outlier: Tentukan titik data mana yang memiliki jarak lebih besar dari threshold tertentu atau tidak sesuai dengan pola mayoritas tetangga terdekatnya.</li>
+<br>
+  <div class="cell docutils container">
+    <div class="cell_input docutils container">
+      <div class="highlight-ipython3 notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="k">def</span> <span class="n">identify_outliers</span>(<span class="n">data</span>, <span class="n">k</span>, <span class="n">threshold</span>):
+              <span class="n">outliers</span> <span class="o">=</span> <span class="p">[]</span>
+              <span class="c"># Hitung jarak Euclidean antara setiap titik data</span>
+              <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">range</span>(<span class="n">len</span>(<span class="n">data</span>)):
+                  <span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
+                  <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="n">range</span>(<span class="n">len</span>(<span class="n">data</span>)):
+                      <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span>:
+                          <span class="n">dist</span> <span class="o">=</span> <span class="n">euclidean_distance</span>(<span class="n">data</span>[<span class="n">i</span>], <span class="n">data</span>[<span class="n">j</span>])
+                          <span class="n">distances</span>.append(<span class="n">dist</span>)
 
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
+                  <span class="c"># Urutkan jarak dan ambil k-tetangga terdekat</span>
+                  <span class="n">distances</span>.<span class="n">sort</span>()
+                  <span class="c"># Jarak ke tetangga terdekat ke-k</span>
+                  <span class="n">k_distance</span> <span class="o">=</span> <span class="n">distances</span>[<span class="n">k</span><span class="o">-</span><span class="m">1</span>]  <span class="c"># k-1 karena indeks dimulai dari 0</span>
+
+                  <span class="c"># Tentukan apakah titik ini outlier</span>
+                  <span class="k">if</span> <span class="n">k_distance</span> <span class="o">></span> <span class="n">threshold</span>:
+                      <span class="n">outliers</span>.<span class="n">append</span>(<span class="n">i</span>)  <span class="c"># Jika jarak lebih besar dari threshold, tandai sebagai outlier</span>
+              
+              <span class="k">return</span> <span class="n">outliers</span>
+
+          <span class="c"># Contoh dataset (misalnya dua fitur: x dan y)</span>
+          <span class="n">data</span> <span class="o">=</span> <span class="n">np.array</span>(<span class="p">[[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">],</span> <span class="p">[</span><span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">],</span> <span class="p">[</span><span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">],</span> <span class="p">[</span><span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">],</span> <span class="p">[</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">]]</span>)
+
+          <span class="c"># Tentukan k (jumlah tetangga terdekat) dan threshold untuk jarak</span>
+          <span class="n">k</span> <span class="o">=</span> <span class="m">2</span>
+          <span class="n">threshold</span> <span class="o">=</span> <span class="m">10</span>
+
+          <span class="c"># Identifikasi outlier</span>
+          <span class="n">outliers</span> <span class="o">=</span> <span class="n">identify_outliers</span>(<span class="n">data</span>, <span class="n">k</span>, <span class="n">threshold</span>)
+
+          <span class="c"># Tampilkan hasil</span>
+          <span class="n">print</span>(<span class="s">"Outliers ditemukan pada indeks: "</span>, <span class="n">outliers</span>)
+        </pre>
+      </div>
+    </div>
+  </div>
+
 
 
 <div class="toctree-wrapper compound">
