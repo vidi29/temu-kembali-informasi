@@ -539,18 +539,18 @@ Jenis:
   </ul>
 </ol>
 
-<b>Langkah-Langkah Menggunakan KNN untuk Deteksi Outlier:<b>
+<b>Langkah-Langkah Menggunakan KNN untuk Deteksi Outlier:</b>
 <ol>
   <li>Persiapkan Data: Siapkan data yang akan digunakan untuk mendeteksi outlier. Pastikan data telah dibersihkan dan diproses.</li>
 
-<table border="1">
+  <table border="1">
     <tr>
-        <th>id</th>
-        <th>Class</th>
-        <th>Petal Length</th>
-        <th>Petal Width</th>
-        <th>Sepal Length</th>
-        <th>Sepal Width</th>
+      <th>id</th>
+      <th>Class</th>
+      <th>Petal Length</th>
+      <th>Petal Width</th>
+      <th>Sepal Length</th>
+      <th>Sepal Width</th>
     </tr>
     <tr><td>1</td><td>Iris-virginica</td><td>85</td><td>66</td><td>86</td><td>99</td></tr>
     <tr><td>2</td><td>Iris-setosa</td><td>1.4</td><td>0.2</td><td>4.9</td><td>3</td></tr>
@@ -702,8 +702,13 @@ Jenis:
     <tr><td>148</td><td>Iris-virginica</td><td>5.2</td><td>2</td><td>6.5</td><td>3</td></tr>
     <tr><td>149</td><td>Iris-virginica</td><td>5.4</td><td>2.3</td><td>6.2</td><td>3.4</td></tr>
     <tr><td>150</td><td>Iris-virginica</td><td>5.1</td><td>1.8</td><td>5.9</td><td>3</td></tr>
-</tbody>
-</table>
+  </tbody>
+  </table>
+
+  <li>Hitung Jarak: Hitung jarak antara titik data dengan semua titik lain dalam dataset menggunakan rumus Euclidean atau metode lain yang sesuai.</li>
+
+  <li>Tentukan K: Pilih nilai k (jumlah tetangga terdekat) yang sesuai untuk dataset. Pengujian dengan berbagai nilai k dapat membantu memilih nilai yang optimal.</li>
+  <li>Identifikasi Outlier: Tentukan titik data mana yang memiliki jarak lebih besar dari threshold tertentu atau tidak sesuai dengan pola mayoritas tetangga terdekatnya.</li>
 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
