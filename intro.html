@@ -552,7 +552,7 @@ Jenis:
       <th style="padding: 10px;">Sepal Length</th>
       <th style="padding: 10px;">Sepal Width</th>
     </tr>
-    <tr><td>1</td><td>Iris-virginica</td><td>85</td><td>66</td><td>86</td><td>99</td></tr>
+    <tr><td>1</td><td></td><td>85</td><td>66</td><td>86</td><td>99</td></tr>
     <tr><td>2</td><td>Iris-setosa</td><td>1.4</td><td>0.2</td><td>4.9</td><td>3</td></tr>
     <tr><td>3</td><td>Iris-setosa</td><td>1.3</td><td>0.2</td><td>4.7</td><td>3.2</td></tr>
     <tr><td>4</td><td>Iris-setosa</td><td>1.5</td><td>0.2</td><td>4.6</td><td>3.1</td></tr>
@@ -706,6 +706,21 @@ Jenis:
   </table>
 
   <li>Hitung Jarak: Hitung jarak antara titik data dengan semua titik lain dalam dataset menggunakan rumus Euclidean atau metode lain yang sesuai.</li>
+  <p>Berikut adalah rumus Euclidean :</p><br>
+
+  <div class="cell docutils container">
+  <div class="cell_input docutils container">
+    <div class="highlight-ipython3 notranslate">
+      <div class="highlight">
+        <pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">array</span><span class="p">,</span> <span class="n">linalg</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">array</span>(<span class="p">[[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">],</span> <span class="p">[</span><span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">],</span> <span class="p">[</span><span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">]]</span>)
+        <span class="n">titik</span> <span class="o">=</span> <span class="n">array</span>(<span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">])</span>
+        <span class="n">jarak</span> <span class="o">=</span> <span class="n">linalg.norm</span>(<span class="n">dataset</span> <span class="o">-</span> <span class="n">titik</span>, <span class="n">axis</span><span class="o">=</span><span class="m">1</span>)
+        <span class="n">print</span>(<span class="s">"Jarak antara titik dengan setiap titik dalam dataset:"</span>, <span class="n">jarak</span>)
+      </pre>
+    </div>
+  </div>
+  </div>
 
   <li>Tentukan K: Pilih nilai k (jumlah tetangga terdekat) yang sesuai untuk dataset. Pengujian dengan berbagai nilai k dapat membantu memilih nilai yang optimal.</li>
   <li>Identifikasi Outlier: Tentukan titik data mana yang memiliki jarak lebih besar dari threshold tertentu atau tidak sesuai dengan pola mayoritas tetangga terdekatnya.</li>
