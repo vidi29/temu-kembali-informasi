@@ -940,6 +940,19 @@ Jenis:
     </tbody>
   </table>
 
+<h2>Local Outlier Factor (LOF) – Deteksi Data Pencilan</h2>
+<p>Dalam analisis data, kita sering menemukan anomali atau outlier, yaitu data yang berbeda jauh dari data lain dalam kumpulan data. 
+  Misalnya, dalam data transaksi keuangan, anomali bisa menjadi indikasi penipuan. Salah satu metode yang sering digunakan untuk mendeteksi outlier adalah Local Outlier Factor (LOF).</p>
+
+<p>LOF adalah metode berbasis kepadatan lokal yang membandingkan kepadatan suatu titik data dengan tetangganya. 
+  Jika kepadatan titik tersebut jauh lebih kecil dibandingkan tetangga-tetangganya, maka titik tersebut dianggap sebagai outlier.</p>
+  
+<b>Konsep Dasar LOF</b>
+<p>LOF bekerja dengan membandingkan kepadatan lokal suatu titik terhadap kepadatan lokal tetangganya. Langkah-langkah utama dalam LOF adalah sebagai berikut:</p>
+<ol type="a">
+  <li>jarak Tetangga Terdekat (k-NN Distance)</li>
+  Untuk setiap titik data, hitung jarak ke k tetangga terdekat. Biasanya digunakan jarak Euclidean:
+</ol>
 
 <div class="toctree-wrapper compound">
 <ul>
